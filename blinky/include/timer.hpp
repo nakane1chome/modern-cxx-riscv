@@ -36,8 +36,7 @@ namespace driver {
 
     /** Simple TIMER driver class 
      */
-    template<class BASE_DURATION=std::chrono::microseconds,
-             class ADDRESS_SPEC=mtimer_address_spec, 
+    template<class ADDRESS_SPEC=mtimer_address_spec, 
              class CONFIG=default_timer_config> class timer {
     public :
 
@@ -47,12 +46,12 @@ namespace driver {
 
         /** Set the timer compare point using a std::chrono::duration timer offset 
          */
-        template<class T=BASE_DURATION> void set_time_cmp(T time_offset) {
+        template<class T=std::chrono::microseconds> void set_time_cmp(T time_offset) {
             set_ticks_time_cmp(std::chrono::duration_cast<timer_ticks>(time_offset));
         }
         /** Get the system timer as a std::chrono::duration value 
          */
-        template<class T=BASE_DURATION> T get_time(void) {
+        template<class T=std::chrono::microseconds> T get_time(void) {
             return std::chrono::duration_cast<T>(get_ticks_time());
         }
         /** Set the time compare point in ticks of the system timer counter.
