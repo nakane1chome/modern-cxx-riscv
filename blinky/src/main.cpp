@@ -37,6 +37,20 @@ static constexpr int LED_GREEN=19;
 static constexpr int LED_BLUE=21;
 static constexpr unsigned int LED_MASK_WHITE=util::bitmask(LED_RED)|util::bitmask(LED_GREEN)|util::bitmask(LED_BLUE);
 
+// Address of timer
+struct mtimer_address_spec {
+    static constexpr std::uintptr_t MTIMECMP_ADDR = 0x2000000 + 0x4000;
+    static constexpr std::uintptr_t MTIME_ADDR = 0x2000000 + 0xBFF8;
+};
+struct mtimer_timer_config {
+    // See
+    // freedom-e-sdk/bsp/sifive-hifive1-revb/core.dts
+    // psdlfaltclk: clock@6
+    // Fixed to 32Khz
+    static constexpr unsigned int MTIME_FREQ_HZ=32768;
+};
+
+
 // Place the IRQ related code in a seperate namespace
 namespace irq {
     // Machine mode interrupt service routine
@@ -57,7 +71,7 @@ namespace irq {
         handler(handler&&) = delete;
         handler &operator=(handler&&) = delete;
     private :
-        inline static void (*_execute_handler)(void); 
+        static inline  void (*_execute_handler)(void); 
         // Trampoline function is required to bridge from the entry point
         // function declared with specific attributes and alignments to this class member.
         friend void entry(void);
@@ -71,7 +85,7 @@ int main(void) {
 
     // Device drivers
     driver::sifive_gpio0_0_dev<SIFIVE_GPIO0_0> gpio_dev;
-    driver::timer<> mtimer;
+    driver::timer<mtimer_address_spec, mtimer_timer_config> mtimer;
 
     // Device Setup       
 
