@@ -1,0 +1,17 @@
+# action.yml
+name: 'Build'
+description: 'Build and record the time'
+inputs:
+  workspace:
+    description: Path to repo
+outputs:
+  start_time: # id of output
+    description: 'before build'
+  end_time: # id of output
+    description: 'after build'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{inputs.workspace}}
+    - blinky/src
