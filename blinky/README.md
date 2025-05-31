@@ -2,7 +2,10 @@ Example device independent blinky program written in pure C++ for RISC-V.
 
 Example of bare-metal programming and low level coding. Details are here:
 
- - https://philmulholland.medium.com/modern-c-for-bare-metal-risc-v-zero-to-blink-part-1-intro-def46973cbe7
+- [RISC-V: A Baremetal Introduction using C++. Intro.](https://philmulholland.medium.com/modern-c-for-bare-metal-risc-v-zero-to-blink-part-1-intro-def46973cbe7) 
+- <https://www.five-embeddev.com/articles/2021/04/30/riscv-and-modern-c++-part1-1/>
+
+https://philmulholland.medium.com/modern-c-for-bare-metal-risc-v-zero-to-blink-part-1-intro-def46973cbe7
 
 The code will enter a main() function and enable a simple periodic ISR 
 handler, and flash an LED.
