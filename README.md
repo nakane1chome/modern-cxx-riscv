@@ -1,9 +1,9 @@
-Knowledge capture and experiments with low level C++ on RISC-V.
+Knowledge capture and experiments with low-level C++ on RISC-V.
 
 More details at either:
 
-- https://philmulholland.medium.com/ 
-- https://www.shincbm.com/
+- [RISC-V: A Baremetal Introduction using C++. Intro.](https://philmulholland.medium.com/modern-c-for-bare-metal-risc-v-zero-to-blink-part-1-intro-def46973cbe7) 
+- <https://www.five-embeddev.com/articles/2021/04/30/riscv-and-modern-c++-part1-1/>
 
 Projects:
 
